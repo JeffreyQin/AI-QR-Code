@@ -15,7 +15,8 @@ app.post('/generate', async (req, res) => {
     const url = req.body.url;
     const prompt = req.body.prompt;
     const qrcode = generateQRCode(url);
-    const qrcode_sd = stableDiffusion(qrcode, prompt);
+    const qrcode_sd = await stableDiffusion(qrcode, prompt);
+    console.log(qrcode_sd);
 });
 
 app.listen(port, () => {
